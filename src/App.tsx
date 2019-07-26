@@ -1,6 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
+import { Provider } from 'mobx-react'
 import './App.css';
+import RootStore from './models/RootStore'
+
+const rootStore = new RootStore()
 
 const App: React.FC = () => {
   return (
