@@ -1,9 +1,9 @@
  
-export interface IBucketViewModelProps {
-}
+import BucketModel from '../models/domain/BucketModels';
+
 class BucketViewModel {
-  store:any;
-  constructor(props:IBucketViewModelProps) {
+  store:BucketModel;
+  constructor(props:BucketModel) {
     this.store = props;
   }
   getBuckets(){
