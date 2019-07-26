@@ -19,7 +19,7 @@ export default class BucketController extends React.Component<IBucketControllerP
   }
   
   handleClick =(event:React.MouseEvent<HTMLButtonElement>) =>{
-    console.log(event);
+    console.log(event.target);
   }
 
 
