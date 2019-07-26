@@ -6,11 +6,11 @@ interface IButtonProps {
 }
 
 const Button: React.FunctionComponent<IButtonProps> = (props) => {
-  return <div>
+  return <button>
     Button!
     {props._id}
     {props.description}
-    </div>;
+    </button>;
 };
 
 export default Button;

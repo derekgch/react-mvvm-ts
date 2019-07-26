@@ -1,5 +1,7 @@
 import * as React from 'react';
 import BucketViewModel from './BucketViewModel';
+import BucketViews from './BucketViews';
+
 export interface IBucketControllerProps {
   viewModel:BucketViewModel
 }
@@ -16,9 +18,11 @@ export default class BucketController extends React.Component<IBucketControllerP
   }
 
   public render() {
+    const buckets = this.props.viewModel.getBuckets();
+
     return (
       <div>
-        
+      < BucketViews buckets={buckets}/>
       </div>
     );
   }
