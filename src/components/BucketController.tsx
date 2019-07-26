@@ -8,6 +8,7 @@ export interface IBucketControllerProps {
 }
 
 export interface IBucketControllerState {
+  bucketsFromDatabase:Bucket[]
 }
 
 export default class BucketController extends React.Component<IBucketControllerProps, IBucketControllerState> {
@@ -15,10 +16,16 @@ export default class BucketController extends React.Component<IBucketControllerP
     super(props);
 
     this.state = {
+      bucketsFromDatabase:[]
     }
   }
   
   handleClick =(event:React.MouseEvent<HTMLButtonElement>) =>{
+    //todo: fetch data from backend and store in state and in the viewModel!
+    // fetch()
+
+    // this.props.viewModel.storeBuckets(data);
+
     console.log(event.target);
   }
 
@@ -28,9 +35,9 @@ export default class BucketController extends React.Component<IBucketControllerP
 
     return (
       <div>
-      < BucketViews 
-        buckets={buckets}
-        handleClick={this.handleClick}
+        < BucketViews 
+          buckets={buckets}
+          handleClick={this.handleClick}
         />
       </div>
     );

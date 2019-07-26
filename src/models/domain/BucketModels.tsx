@@ -20,6 +20,9 @@ class BucketModel {
     // @action removePokemon(bucket:any):void {
     //     // this.buckets.remove(pokemon)
     // }
+    @action storeBuckets(buckets:Bucket[]):void{
+        this.buckets.push(...buckets)
+    }
 
     getBuckets():Bucket[] {
         return this.buckets;
