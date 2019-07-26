@@ -4,7 +4,8 @@ import Button from './UI/Button';
 
 
 export interface IBucketViewsProps {
-  buckets: Bucket[]
+  buckets: Bucket[],
+  handleClick : (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export default class BucketViews extends React.Component<IBucketViewsProps> {
@@ -13,6 +14,7 @@ export default class BucketViews extends React.Component<IBucketViewsProps> {
 
     return (
       <div>
+        <button onClick ={ this.props.handleClick } >Get Buckets from database!</button>
         {this.props.buckets.map( e => <Button key={e._id} _id={e._id} description={e.description}/>)}
       </div>
     );
