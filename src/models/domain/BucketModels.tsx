@@ -1,6 +1,6 @@
 import { observable, action, decorate } from 'mobx';
 import { Bucket } from './TypeDef';
-
+import uuid from 'uuid/v4';
 
 const mockData:Bucket[] = [
     {_id:"1",description:"bucket1" },
@@ -8,18 +8,9 @@ const mockData:Bucket[] = [
     {_id:"3",description:"bucket3" },
 ]
 
-
-const mockData2:Bucket[] = [
-    {_id:"10",description:"bucket120" },
-    {_id:"2",description:"bucket22" },
-    {_id:"3",description:"bucket32" },
-]
-
 class BucketModel {
-    buckets: Bucket[] = observable([]);
-    constructor(){
-        this.buckets.push(...mockData);
-    }
+    @observable buckets: Bucket[] = mockData;
+    private count:number =0 ;
 
     storeBuckets(buckets:Bucket[]):void{
         this.buckets.push(...buckets)
@@ -27,7 +18,8 @@ class BucketModel {
 
     @action fetchBuckets():void{
         //TODO: fetch bucket from database and store in obserable bucketsf
-        this.buckets.push(mockData2[0]);
+        this.buckets.push({_id:uuid(), description:"bucket test1"});
+
         console.log(this.buckets);
         // console.log("data model fetch!");
     }
