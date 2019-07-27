@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { inject } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import BucketController from './BucketController';
 import BucketViewModel from './BucketViewModel';
 import RootStore from '../models/RootStore';
@@ -8,9 +8,8 @@ import BucketModel from '../models/domain/BucketModels';
 export interface IBucketProviderProps {
   [key: string]: BucketModel
 }
-
-@inject(RootStore.type.BUCKET_MODEL)
-export default class BucketProvider extends React.Component<IBucketProviderProps> {
+@observer
+class BucketProvider extends React.Component<IBucketProviderProps> {
   viewModel: BucketViewModel;
   constructor(props: IBucketProviderProps) {
     super(props);
@@ -19,8 +18,10 @@ export default class BucketProvider extends React.Component<IBucketProviderProps
   }
 
   public render() {
+    console.log("BucketProvider",this.viewModel.getBuckets())
     return (
       <BucketController viewModel = {this.viewModel}/>
     );
   }
 }
+export default inject(RootStore.type.BUCKET_MODEL)(BucketProvider);

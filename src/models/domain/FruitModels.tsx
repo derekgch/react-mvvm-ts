@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import { observable, action, decorate } from 'mobx';
 
 import { Fruit } from './TypeDef';
 
@@ -19,5 +19,7 @@ class FruitModel {
         return this.fruits;
     }
 }
+
+
 
 export default FruitModel

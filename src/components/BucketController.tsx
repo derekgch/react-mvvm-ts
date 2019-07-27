@@ -22,18 +22,23 @@ export default class BucketController extends React.Component<IBucketControllerP
   
   handleClick =(event:React.MouseEvent<HTMLButtonElement>) =>{
     this.props.viewModel.fetchBuckets();
-    console.log(event.target);
+    // console.log(event.target);
+  }
+
+  handleClickPrint=(event:React.MouseEvent<HTMLButtonElement>) =>{
+    console.log("BucketController",this.props.viewModel.getBuckets())
   }
 
 
   render() {
     const buckets = this.props.viewModel.getBuckets();
-
+    console.log("BucketController",buckets)
     return (
       <div>
         < BucketViews 
           buckets={buckets}
           handleClick={this.handleClick}
+          handleClickPrint={this.handleClickPrint}
         />
       </div>
     );

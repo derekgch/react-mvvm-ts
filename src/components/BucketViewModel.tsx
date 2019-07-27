@@ -8,7 +8,9 @@ class BucketViewModel {
     this.store = props;
   }
   getBuckets():Bucket[] {
-    return this.store.getBuckets();
+    const result = this.store.getBuckets();
+    console.log("BucketViewModel",result);
+    return result;
   }
   storeBuckets(buckets: Bucket[]):void {
     this.store.storeBuckets(buckets);
