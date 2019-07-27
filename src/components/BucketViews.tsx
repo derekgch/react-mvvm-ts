@@ -2,13 +2,14 @@ import * as React from 'react';
 import { Bucket } from '../models/domain/TypeDef';
 import Button from './UI/Button';
 
+import { observer } from 'mobx-react';
 
 export interface IBucketViewsProps {
   buckets: Bucket[],
   handleClick : (event: React.MouseEvent<HTMLButtonElement>) => void,
   handleClickPrint: (event: React.MouseEvent<HTMLButtonElement>) => void,
 }
-
+@observer
 export default class BucketViews extends React.Component<IBucketViewsProps> {
   render() {
     console.log(this.props.buckets)

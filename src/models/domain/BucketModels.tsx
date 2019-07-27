@@ -16,13 +16,16 @@ const mockData2:Bucket[] = [
 ]
 
 class BucketModel {
-    buckets: Bucket[] = mockData;
+    buckets: Bucket[] = observable([]);
+    constructor(){
+        this.buckets.push(...mockData);
+    }
 
     storeBuckets(buckets:Bucket[]):void{
         this.buckets.push(...buckets)
     }
 
-    fetchBuckets():void{
+    @action fetchBuckets():void{
         //TODO: fetch bucket from database and store in obserable bucketsf
         this.buckets.push(mockData2[0]);
         console.log(this.buckets);
@@ -33,11 +36,5 @@ class BucketModel {
         return this.buckets;
     }
 }
-
-decorate(BucketModel,{
-    buckets:observable,
-    storeBuckets:action,
-    fetchBuckets:action
-})
 
 export default BucketModel

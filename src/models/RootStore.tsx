@@ -20,7 +20,6 @@ class RootStore {
 
 decorate(RootStore, {
   bucketModel:observable,
-
 })
 
 

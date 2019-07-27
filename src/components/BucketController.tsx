@@ -2,6 +2,7 @@ import * as React from 'react';
 import BucketViewModel from './BucketViewModel';
 import BucketViews from './BucketViews';
 import { Bucket } from '../models/domain/TypeDef';
+import { observer } from 'mobx-react';
 
 export interface IBucketControllerProps {
   viewModel:BucketViewModel
@@ -10,7 +11,7 @@ export interface IBucketControllerProps {
 export interface IBucketControllerState {
   bucketsFromDatabase:Bucket[]
 }
-
+@observer
 export default class BucketController extends React.Component<IBucketControllerProps, IBucketControllerState> {
   constructor(props: IBucketControllerProps) {
     super(props);
