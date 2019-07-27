@@ -21,11 +21,7 @@ export default class BucketController extends React.Component<IBucketControllerP
   }
   
   handleClick =(event:React.MouseEvent<HTMLButtonElement>) =>{
-    //todo: fetch data from backend and store in state and in the viewModel!
-    // fetch()
-
-    // this.props.viewModel.storeBuckets(data);
-
+    this.props.viewModel.fetchBuckets();
     console.log(event.target);
   }
 

@@ -13,6 +13,10 @@ class BucketViewModel {
   storeBuckets(buckets: Bucket[]):void {
     this.store.storeBuckets(buckets);
   }
+
+  fetchBuckets():void {
+    this.store.fetchBuckets();
+  }
 }
 
 export default BucketViewModel;

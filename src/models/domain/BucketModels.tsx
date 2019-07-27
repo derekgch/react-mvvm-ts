@@ -24,6 +24,10 @@ class BucketModel {
         this.buckets.push(...buckets)
     }
 
+    @action fetchBuckets():void{
+        //TODO: fetch bucket from database and store in obserable buckets
+    }
+
     getBuckets():Bucket[] {
         return this.buckets;
     }
