@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Bucket } from '../models/domain/TypeDef';
-import Button from './UI/Button';
-
+import Button from '@material-ui/core/Button';
+import BucketButton from './UI/BucketButton';
 import { observer } from 'mobx-react';
 
 export interface IBucketViewsProps {
@@ -16,9 +16,9 @@ export default class BucketViews extends React.Component<IBucketViewsProps> {
 
     return (
       <div>
-        <button onClick ={ this.props.handleClick } >Get Buckets from database!</button>
-        <button onClick ={ this.props.handleClickPrint } >Print Buckets to console!</button>
-        {this.props.buckets.map( e => <Button key={e._id} _id={e._id} description={e.description}/>)}
+        <Button onClick ={ this.props.handleClick }  variant="contained" color="primary">Get Buckets from database!</Button>
+        <Button onClick ={ this.props.handleClickPrint }  variant="contained" color="primary">Print Buckets to console!</Button>
+        {this.props.buckets.map( e => <BucketButton key={e._id} _id={e._id} description={e.description}/>)}
       </div>
     );
   }
