@@ -8,11 +8,16 @@ interface IButtonProps {
 }
 
 const BucketButton: React.FunctionComponent<IButtonProps> = (props) => {
-  return <Button  variant="contained" color="primary" onClick={(event) => props.handleClick(event, props._id)}>
-    Bucket Button!
-    --{props._id}--
-    {props.description}
-    </Button>;
+  return <div>
+      <Button   variant="contained" 
+                color="primary" 
+                onClick={(event) => props.handleClick(event, props._id)}
+      >
+        Bucket Button!
+        --{props._id}--
+        {props.description}
+      </Button>
+    </div>
 };
 
 export default BucketButton;

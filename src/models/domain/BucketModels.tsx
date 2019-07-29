@@ -1,5 +1,5 @@
 import { observable, action, decorate } from 'mobx';
-import { Bucket } from './TypeDef';
+import { Bucket, Fruit } from './TypeDef';
 import uuid from 'uuid/v4';
 
 const mockData:Bucket[] = [
@@ -10,6 +10,7 @@ const mockData:Bucket[] = [
 
 class BucketModel {
     @observable buckets: Bucket[] = [];
+    @observable fruits: Fruit[] = [];
 
     @action storeBuckets(buckets:Bucket[]):void{
         this.buckets.push(...buckets)
@@ -23,8 +24,19 @@ class BucketModel {
         // console.log("data model fetch!");
     }
 
+    @action clearBuckets():void{
+        while(this.buckets.length > 0){
+            this.buckets.pop();
+        }
+    }
+
     getBuckets():Bucket[] {
         return this.buckets;
+    }
+
+    getFruits(id:string):Fruit[]{
+        const found = this.buckets.find((e:Bucket) => e._id === id);
+        return found!.fruits || [];
     }
 }
 

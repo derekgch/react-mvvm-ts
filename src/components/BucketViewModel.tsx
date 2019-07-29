@@ -45,6 +45,7 @@ class BucketViewModel {
     fetch('http://localhost:3001/graphql', config)
     .then( r => r.json() )
     .then( data => {
+      this.store.clearBuckets();
       this.store.storeBuckets(data.data.buckets);
     } )
   }

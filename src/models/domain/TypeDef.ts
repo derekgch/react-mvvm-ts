@@ -1,7 +1,7 @@
 export type Bucket ={
   _id:string,
   description:string,
-  fruit?:[]
+  fruits?:Fruit[]
 }
 
 
