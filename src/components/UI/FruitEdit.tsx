@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -22,11 +22,15 @@ const Transition = React.forwardRef<unknown, TransitionProps>(function Transitio
 });
 
 const FruitEdit: React.FC<Props> = (props) => {
-  const {fruitDescription, fruitID} = props;
-  const [ descriptionText, setDescriptionText ] = useState(fruitDescription);
+  const { fruitDescription, fruitID } = props;
+  const [ descriptionText, setDescriptionText ] = useState(fruitDescription || "");
   const handleChange = (event:React.ChangeEvent<HTMLInputElement>):void => {
     setDescriptionText(event.target.value);
   }
+  useEffect(()=>{
+    setDescriptionText(fruitDescription);
+  },[fruitDescription])
+
   return (
     <Dialog
       open={props.open}
@@ -37,7 +41,7 @@ const FruitEdit: React.FC<Props> = (props) => {
     <DialogTitle>{"Editing Fruit- " + fruitID}</DialogTitle>
       <DialogContent>
           Description:
-          <Input  type='text' 
+          <Input   
                   value={descriptionText} 
                   onChange={handleChange}
                   fullWidth
@@ -49,7 +53,7 @@ const FruitEdit: React.FC<Props> = (props) => {
       <Button onClick={props.onClose} color="primary">
         Cancel
       </Button>
-      <Button onClick={props.onClose} color="primary">
+      <Button onClick={props.onClose} color="secondary">
         Save
       </Button>
     </DialogActions>
