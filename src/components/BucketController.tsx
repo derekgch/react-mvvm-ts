@@ -66,6 +66,8 @@ export default class BucketController extends React.Component<IBucketControllerP
         <FruitEdit 
           open={this.state.openEdit}
           onClose={this.closeEdit}
+          fruitID={this.state.inEdit._id}
+          fruitDescription={this.state.inEdit.description}
           >
 
         </FruitEdit>
