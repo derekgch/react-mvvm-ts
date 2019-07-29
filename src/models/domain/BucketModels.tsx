@@ -33,10 +33,14 @@ class BucketModel {
     getBuckets():Bucket[] {
         return this.buckets;
     }
+    getFruits():Fruit[] {
+        return this.fruits;
+    }
 
-    getFruits(id:string):Fruit[]{
+    findFruits(id:string):Fruit[]{
         const found = this.buckets.find((e:Bucket) => e._id === id);
-        return found!.fruits || [];
+        this.fruits =  found!.fruits || [];
+        return this.getFruits();
     }
 }
 

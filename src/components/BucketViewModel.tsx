@@ -15,8 +15,9 @@ class BucketViewModel {
   storeBuckets(buckets: Bucket[]):void {
     this.store.storeBuckets(buckets);
   }
-  storeFruits(id:string){
+  findFruits(id:string){
     console.log('bucketid:',id);
+    this.store.findFruits(id);
   }
 
   fetchBuckets():void {
