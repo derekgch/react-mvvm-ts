@@ -27,6 +27,10 @@ class BucketViewModel {
   findOneFruit(id:string):Fruit{
     return this.store.findOneFruit(id);
   }
+  saveFruit(_id:string, description:string):void{
+    console.log("saving id:", _id, description);
+    this.store.saveFruit(_id, description);
+  }
 
   fetchBuckets():void {
     this.store.fetchBuckets();

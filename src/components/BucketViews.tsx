@@ -16,8 +16,7 @@ export interface IBucketViewsProps {
 @observer
 export default class BucketViews extends React.Component<IBucketViewsProps> {
   render() {
-    console.log(this.props.buckets)
-
+    console.log("this.props.fruits",this.props.fruits)
     return (
       <div>
         <Button 

@@ -12,9 +12,10 @@ import { TransitionProps } from '@material-ui/core/transitions';
 
 interface Props {
   open:boolean,
-  onClose:()=>any,
+  onClose:()=>void,
   fruitID:string,
-  fruitDescription:string
+  fruitDescription:string,
+  handleSave:(id:string, description:string)=>void
 }
 
 const Transition = React.forwardRef<unknown, TransitionProps>(function Transition(props, ref) {
@@ -53,7 +54,7 @@ const FruitEdit: React.FC<Props> = (props) => {
       <Button onClick={props.onClose} color="primary">
         Cancel
       </Button>
-      <Button onClick={props.onClose} color="secondary">
+      <Button onClick={() => props.handleSave(fruitID, descriptionText)} color="secondary">
         Save
       </Button>
     </DialogActions>

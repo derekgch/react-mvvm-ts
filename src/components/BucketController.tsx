@@ -19,12 +19,12 @@ export default class BucketController extends React.Component<IBucketControllerP
     super(props);
     this.state = {
       openEdit:false,
-      inEdit:{} as Fruit
+      inEdit:{_id:"", description:""} as Fruit
     }
   }
 
   openEdit = () => this.setState({openEdit:true});
-  closeEdit = () => this.setState({openEdit:false});
+  closeEdit = () => this.setState({openEdit:false, inEdit:{_id:"", description:""} as Fruit});
   handleEditChange = (event:React.MouseEvent<HTMLButtonElement>) =>{
     console.log(event.target)
   }
@@ -47,7 +47,11 @@ export default class BucketController extends React.Component<IBucketControllerP
     const foundFruit = this.props.viewModel.findOneFruit(id);
     this.setState({inEdit: foundFruit, openEdit:true});
   }
-  
+
+  handleSave=( id:string, description:string )=>{
+    this.props.viewModel.saveFruit(id, description)
+    this.closeEdit();
+  }
 
   render() {
     const buckets = this.props.viewModel.getBuckets();
@@ -66,6 +70,7 @@ export default class BucketController extends React.Component<IBucketControllerP
         <FruitEdit 
           open={this.state.openEdit}
           onClose={this.closeEdit}
+          handleSave={this.handleSave}
           fruitID={this.state.inEdit._id}
           fruitDescription={this.state.inEdit.description}
           >

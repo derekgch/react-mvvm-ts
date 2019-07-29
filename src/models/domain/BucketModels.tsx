@@ -41,6 +41,17 @@ class BucketModel {
         return result;
     }
 
+    @action saveFruit(_id:string, description:string):void{
+        let newFruit:Fruit = {_id, description, bucketID:""};
+        this.fruits.forEach((e, index) =>{
+            if(e._id === _id){
+                newFruit.bucketID = e.bucketID;
+                this.fruits.splice(index, 1, newFruit);
+                return;
+            }
+        })
+    }
+
     getBuckets():Bucket[] {
         return this.buckets;
     }
