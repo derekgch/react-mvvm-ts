@@ -1,6 +1,6 @@
  
 import BucketModel from '../models/domain/BucketModels';
-import { Bucket } from '../models/domain/TypeDef';
+import { Bucket, Fruit } from '../models/domain/TypeDef';
 
 class BucketViewModel {
   store:BucketModel;
@@ -12,12 +12,17 @@ class BucketViewModel {
     console.log("BucketViewModel",result);
     return result;
   }
+  
+  getFruits():Fruit[]{
+    return this.store.getFruits();
+  }
+
   storeBuckets(buckets: Bucket[]):void {
     this.store.storeBuckets(buckets);
   }
-  findFruits(id:string){
+  findFruits(id:string):Fruit[]{
     console.log('bucketid:',id);
-    this.store.findFruits(id);
+    return this.store.findFruits(id);
   }
 
   fetchBuckets():void {

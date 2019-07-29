@@ -29,6 +29,11 @@ class BucketModel {
             this.buckets.pop();
         }
     }
+    @action clearFruits():void{
+        while(this.fruits.length > 0){
+            this.fruits.pop();
+        }
+    }
 
     getBuckets():Bucket[] {
         return this.buckets;
@@ -39,7 +44,9 @@ class BucketModel {
 
     findFruits(id:string):Fruit[]{
         const found = this.buckets.find((e:Bucket) => e._id === id);
-        this.fruits =  found!.fruits || [];
+        const result = found!.fruits || [];
+        this.clearFruits();
+        this.fruits.push(...result);
         return this.getFruits();
     }
 }

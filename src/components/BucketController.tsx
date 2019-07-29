@@ -30,18 +30,20 @@ export default class BucketController extends React.Component<IBucketControllerP
   }
 
   handleFruitClick=(event:React.MouseEvent<HTMLButtonElement>, id:string) =>{
-    console.log("BucketController",this.props.viewModel.getBuckets());
-    this.props.viewModel.findFruits(id);
+    const result = this.props.viewModel.findFruits(id);
+    console.log("fruits:", result)
   }
 
 
   render() {
     const buckets = this.props.viewModel.getBuckets();
+    const fruits = this.props.viewModel.getFruits();
     console.log("BucketController",buckets)
     return (
       <div>
         < BucketViews 
           buckets={buckets}
+          fruits={fruits}
           handleClick={this.handleClick}
           handleClickPrint={this.handleClickPrint}
           handleFruitClick={this.handleFruitClick}
