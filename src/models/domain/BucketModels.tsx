@@ -11,6 +11,7 @@ const mockData:Bucket[] = [
 class BucketModel {
     @observable buckets: Bucket[] = [];
     @observable fruits: Fruit[] = [];
+    private currentBucket:string = '';
 
     @action storeBuckets(buckets:Bucket[]):void{
         this.buckets.push(...buckets)
@@ -42,14 +43,31 @@ class BucketModel {
     }
 
     @action saveFruit(_id:string, description:string):void{
-        let newFruit:Fruit = {_id, description, bucketID:""};
-        this.fruits.forEach((e, index) =>{
-            if(e._id === _id){
-                newFruit.bucketID = e.bucketID;
-                this.fruits.splice(index, 1, newFruit);
+        let newFruit:Fruit = {_id, description, bucketID:this.currentBucket};
+        let bIndex:number = -1;
+        let fIndex:number = -1;
+        this.buckets.forEach( (eachBucket, indexBucket) => {
+            if(eachBucket._id === this.currentBucket){
+                bIndex = indexBucket;
                 return;
             }
         })
+        this.fruits.forEach((e, index) =>{
+            if(e._id === _id){
+                fIndex = index;
+            }
+        })
+
+        if(bIndex!== -1 && fIndex!== -1){
+            this.fruits.splice(fIndex,1,newFruit);
+            if(this.buckets[bIndex].fruits!== undefined){
+                this.buckets[bIndex].fruits!.splice(fIndex, 1, newFruit);
+            }
+        }
+    }
+
+    clearCurrentBucket():void{
+        this.currentBucket = '';
     }
 
     getBuckets():Bucket[] {
@@ -62,6 +80,7 @@ class BucketModel {
     findFruits(id:string):Fruit[]{
         const found = this.buckets.find((e:Bucket) => e._id === id);
         const result = found!.fruits || [];
+        this.currentBucket=id;
         this.clearFruits();
         this.fruits.push(...result);
         return this.getFruits();
