@@ -10,7 +10,7 @@ let theme = createMuiTheme({
   palette: {
     primary: red,
     secondary: {
-      main: '#000',
+      main: '#00e',
     },
   },
 });
@@ -18,7 +18,8 @@ theme = responsiveFontSizes(theme);
 
 interface FruitsButtonProps {
   _id:string,
-  description:string
+  description:string,
+  handleclick:(event:React.MouseEvent<HTMLButtonElement>, id:string)=>void;
 }
 
 const FruitsButton: React.FC<FruitsButtonProps> = (props) => {
@@ -26,7 +27,9 @@ const FruitsButton: React.FC<FruitsButtonProps> = (props) => {
     <ThemeProvider theme={theme}>
     <div>
       <Button variant="contained" 
-              color="secondary" >
+              color="secondary" 
+              onClick={(event)=>props.handleclick(event, props._id)}
+      >
         Fruit-{props._id}-{props.description}
       </Button>
     </div>

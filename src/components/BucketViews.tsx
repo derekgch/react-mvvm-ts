@@ -11,6 +11,7 @@ export interface IBucketViewsProps {
   handleClick : (event: React.MouseEvent<HTMLButtonElement>) => void,
   handleClickPrint: (event: React.MouseEvent<HTMLButtonElement>) => void,
   handleFruitClick: (event: React.MouseEvent<HTMLButtonElement>, id:string) => void,
+  handleEditFruit: (event: React.MouseEvent<HTMLButtonElement>, id:string) => void,
 }
 @observer
 export default class BucketViews extends React.Component<IBucketViewsProps> {
@@ -47,6 +48,7 @@ export default class BucketViews extends React.Component<IBucketViewsProps> {
                                         key={e._id}
                                         _id={e._id}
                                         description={e.description} 
+                                        handleclick={this.props.handleEditFruit}
             >
 
           </FruitButton>)}

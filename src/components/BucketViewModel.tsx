@@ -24,6 +24,9 @@ class BucketViewModel {
     console.log('bucketid:',id);
     return this.store.findFruits(id);
   }
+  findOneFruit(id:string):Fruit{
+    return this.store.findOneFruit(id);
+  }
 
   fetchBuckets():void {
     this.store.fetchBuckets();

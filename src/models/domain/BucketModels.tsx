@@ -35,6 +35,12 @@ class BucketModel {
         }
     }
 
+    @action findOneFruit(id:string):Fruit{
+        const found = this.fruits.find( (e:Fruit) => e._id ===id );
+        const result = found ? found : {} as Fruit;
+        return result;
+    }
+
     getBuckets():Bucket[] {
         return this.buckets;
     }
