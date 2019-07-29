@@ -9,17 +9,16 @@ const mockData:Bucket[] = [
 ]
 
 class BucketModel {
-    @observable buckets: Bucket[] = mockData;
-    private count:number =0 ;
+    @observable buckets: Bucket[] = [];
 
-    storeBuckets(buckets:Bucket[]):void{
+    @action storeBuckets(buckets:Bucket[]):void{
         this.buckets.push(...buckets)
     }
 
     @action fetchBuckets():void{
         //TODO: fetch bucket from database and store in obserable bucketsf
         this.buckets.push({_id:uuid(), description:"bucket test1"});
-
+        
         console.log(this.buckets);
         // console.log("data model fetch!");
     }

@@ -15,7 +15,6 @@ export interface IBucketControllerState {
 export default class BucketController extends React.Component<IBucketControllerProps, IBucketControllerState> {
   constructor(props: IBucketControllerProps) {
     super(props);
-
     this.state = {
       bucketsFromDatabase:[]
     }
@@ -30,6 +29,12 @@ export default class BucketController extends React.Component<IBucketControllerP
     console.log("BucketController",this.props.viewModel.getBuckets())
   }
 
+  handleFruitClick=(event:React.MouseEvent<HTMLButtonElement>, id:string) =>{
+    console.log("BucketController",this.props.viewModel.getBuckets());
+    this.props.viewModel.storeFruits(id);
+
+  }
+
 
   render() {
     const buckets = this.props.viewModel.getBuckets();
@@ -40,6 +45,7 @@ export default class BucketController extends React.Component<IBucketControllerP
           buckets={buckets}
           handleClick={this.handleClick}
           handleClickPrint={this.handleClickPrint}
+          handleFruitClick={this.handleFruitClick}
         />
       </div>
     );

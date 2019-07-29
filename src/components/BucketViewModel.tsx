@@ -15,9 +15,38 @@ class BucketViewModel {
   storeBuckets(buckets: Bucket[]):void {
     this.store.storeBuckets(buckets);
   }
+  storeFruits(id:string){
+    console.log('bucketid:',id);
+  }
 
   fetchBuckets():void {
     this.store.fetchBuckets();
+
+    const query = `{ 
+      buckets { 
+        _id 
+        title 
+        description 
+        fruits { 
+          _id 
+          description
+        } 
+      } 
+    }`
+    const config = {
+      method: "POST",
+      headers:{
+        'Content-Type': 'application/JSON',
+        'Data-Type': 'application/JSON'
+      },
+      body: JSON.stringify({query: query})
+    }
+    
+    fetch('http://localhost:3001/graphql', config)
+    .then( r => r.json() )
+    .then( data => {
+      this.store.storeBuckets(data.data.buckets);
+    } )
   }
 }
 

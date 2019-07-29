@@ -1,6 +1,5 @@
 
 import BucketModel from './domain/BucketModels';
-import {action, observable, decorate} from 'mobx';
 
 class RootStore {
   bucketModel:BucketModel;
@@ -17,10 +16,6 @@ class RootStore {
     [RootStore.type.BUCKET_MODEL]: this.bucketModel
   })
 }
-
-decorate(RootStore, {
-  bucketModel:observable,
-})
 
 
 export default RootStore;

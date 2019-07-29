@@ -8,6 +8,7 @@ export interface IBucketViewsProps {
   buckets: Bucket[],
   handleClick : (event: React.MouseEvent<HTMLButtonElement>) => void,
   handleClickPrint: (event: React.MouseEvent<HTMLButtonElement>) => void,
+  handleFruitClick: (event: React.MouseEvent<HTMLButtonElement>, id:string) => void,
 }
 @observer
 export default class BucketViews extends React.Component<IBucketViewsProps> {
@@ -18,7 +19,12 @@ export default class BucketViews extends React.Component<IBucketViewsProps> {
       <div>
         <Button onClick ={ this.props.handleClick }  variant="contained" color="primary">Get Buckets from database!</Button>
         <Button onClick ={ this.props.handleClickPrint }  variant="contained" color="primary">Print Buckets to console!</Button>
-        {this.props.buckets.map( e => <BucketButton key={e._id} _id={e._id} description={e.description}/>)}
+        {this.props.buckets.map( e => <BucketButton 
+                                        key={e._id} 
+                                        _id={e._id} 
+                                        description={e.description} 
+                                        handleClick={ this.props.handleFruitClick }
+                                      />)}
       </div>
     );
   }
