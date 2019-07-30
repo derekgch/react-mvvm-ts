@@ -39,6 +39,10 @@ class BucketModel {
         return result;
     }
 
+    @action saveBucket(newBucket:Bucket):void{
+        this.buckets.push(newBucket);
+    }
+
     @action saveFruit(_id:string, description:string):void{
         const newFruit:Fruit = {_id, description, bucketID:this.currentBucket};
         let bIndex:number = -1;

@@ -49,7 +49,10 @@ class BucketViewModel {
     fetch('http://localhost:3001/graphql', genConfig(query))
     .then( r => r.json() )
     .then( data => {
-      console.log("bucket saved", data)
+      const newBucket:Bucket = data.data.createBucket;
+      this.store.saveBucket(newBucket);
+
+      console.log("bucket saved", data);
     } )
     console.log("save bucket!", description)
   }
