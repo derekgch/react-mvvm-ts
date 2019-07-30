@@ -18,11 +18,7 @@ class BucketModel {
     }
 
     @action fetchBuckets():void{
-        //TODO: fetch bucket from database and store in obserable bucketsf
         this.buckets.push({_id:uuid(), description:"bucket test1"});
-        
-        console.log(this.buckets);
-        // console.log("data model fetch!");
     }
 
     @action clearBuckets():void{
@@ -30,6 +26,7 @@ class BucketModel {
             this.buckets.pop();
         }
     }
+
     @action clearFruits():void{
         while(this.fruits.length > 0){
             this.fruits.pop();
@@ -43,7 +40,7 @@ class BucketModel {
     }
 
     @action saveFruit(_id:string, description:string):void{
-        let newFruit:Fruit = {_id, description, bucketID:this.currentBucket};
+        const newFruit:Fruit = {_id, description, bucketID:this.currentBucket};
         let bIndex:number = -1;
         let fIndex:number = -1;
         this.buckets.forEach( (eachBucket, indexBucket) => {
@@ -55,6 +52,7 @@ class BucketModel {
         this.fruits.forEach((e, index) =>{
             if(e._id === _id){
                 fIndex = index;
+                return;
             }
         })
 
@@ -86,5 +84,4 @@ class BucketModel {
         return this.getFruits();
     }
 }
-
 export default BucketModel

@@ -37,7 +37,7 @@ class BucketViewModel {
   findOneFruit(id:string):Fruit{
     return this.store.findOneFruit(id);
   }
-  
+
   saveFruit(_id:string, description:string):void{
     console.log("saving id:", _id, description);
     const query = `mutation{ 
@@ -48,7 +48,6 @@ class BucketViewModel {
     fetch('http://localhost:3001/graphql', genConfig(query))
     .then( r => r.json() )
     .then( data => {
-
       this.store.saveFruit(_id, description);
     } )
   }
