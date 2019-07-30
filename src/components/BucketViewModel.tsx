@@ -38,6 +38,22 @@ class BucketViewModel {
     return this.store.findOneFruit(id);
   }
 
+  createBucket(description:string):void{
+    const query =`mutation{
+      createBucket(title:\"Test title\", description:\"${description}\"){
+        _id
+        title
+        description
+      }
+    }`
+    fetch('http://localhost:3001/graphql', genConfig(query))
+    .then( r => r.json() )
+    .then( data => {
+      console.log("bucket saved", data)
+    } )
+    console.log("save bucket!", description)
+  }
+
   saveFruit(_id:string, description:string):void{
     console.log("saving id:", _id, description);
     const query = `mutation{ 
@@ -67,7 +83,6 @@ class BucketViewModel {
       } 
     }`
 
-    
     fetch('http://localhost:3001/graphql', genConfig(query))
     .then( r => r.json() )
     .then( data => {

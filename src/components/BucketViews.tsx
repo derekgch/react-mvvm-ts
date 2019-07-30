@@ -13,6 +13,7 @@ export interface IBucketViewsProps {
   handleFruitClick: (event: React.MouseEvent<HTMLButtonElement>, id:string) => void,
   handleEditFruit: (event: React.MouseEvent<HTMLButtonElement>, id:string) => void,
 }
+
 @observer
 export default class BucketViews extends React.Component<IBucketViewsProps> {
   render() {
@@ -42,6 +43,7 @@ export default class BucketViews extends React.Component<IBucketViewsProps> {
                                           handleClick={ this.props.handleFruitClick }
                                         />)}
         </div>
+
         <div>
           {this.props.fruits.map( e=> <FruitButton
                                         key={e._id}
