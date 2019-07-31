@@ -52,13 +52,10 @@ class BucketViewModel {
       const newBucket:Bucket = data.data.createBucket;
       this.store.saveBucket(newBucket);
 
-      console.log("bucket saved", data);
     } )
-    console.log("save bucket!", description)
   }
 
   saveFruit(_id:string, description:string):void{
-    console.log("saving id:", _id, description);
     const query = `mutation{ 
       updateFruit(_id:\"${_id}\", description:\"${description}\") {
         _id
