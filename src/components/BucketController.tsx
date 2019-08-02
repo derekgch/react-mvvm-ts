@@ -2,9 +2,9 @@ import * as React from 'react';
 import BucketViewModel from './BucketViewModel';
 import BucketViews from './BucketViews';
 import EditForm from './UI/EditForm';
+import CreateBucket from './UI/CreateBucket';
 import { Bucket, Fruit } from '../models/domain/TypeDef';
 import { observer } from 'mobx-react';
-import CreateBucket from './UI/CreateBucket';
 
 export interface IBucketControllerProps {
   viewModel:BucketViewModel
