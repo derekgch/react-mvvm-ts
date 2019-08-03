@@ -28,6 +28,7 @@ export default class BucketController extends React.Component<IBucketControllerP
 
   openEdit = () => this.setState({ openEdit:true });
   closeEdit = () => this.setState({ openEdit:false, inEdit:{_id:"", description:""} as Fruit });
+  openCreate = () => this.setState({ openCreate:true });
   closeCreate= () => this.setState({ openCreate:false });
 
   handleClick =(event:React.MouseEvent<HTMLButtonElement>) =>{
@@ -35,8 +36,8 @@ export default class BucketController extends React.Component<IBucketControllerP
   }
 
   handleCreate=(event:React.MouseEvent<HTMLButtonElement>) =>{
-    console.log("create bucket!")
-    this.setState({openCreate:true})
+    console.log("create bucket!");
+    this.openCreate();
   }
 
   handleFruitClick=(event:React.MouseEvent<HTMLButtonElement>, id:string) =>{

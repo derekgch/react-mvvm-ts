@@ -8,8 +8,8 @@ import CreateBucket from './UI/CreateBucket';
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('BucketController', () => {
-    let viewModel = null
-    let wrapper = null
+    let viewModel = null;
+    let wrapper = null;
 
 
     beforeEach(() => {
@@ -40,6 +40,18 @@ describe('BucketController', () => {
         wrapper.instance().openEdit();
         expect(wrapper.state().openEdit).toEqual(true);
         expect(wrapper.find(EditForm)).toHaveLength(1);
+    })
+
+    it('should not render <EditForm/> modal after setting state.openEdit to be false', () =>{
+        wrapper.instance().closeEdit();
+        expect(wrapper.state().openEdit).toEqual(false);
+        expect(wrapper.find(EditForm)).toHaveLength(1);
+    })
+
+    it('should render <CreateBucket/> modal after setting state.openEdit to be true', () =>{
+        wrapper.instance().openCreate();
+        expect(wrapper.state().openCreate).toEqual(true);
+        expect(wrapper.find(CreateBucket)).toHaveLength(1);
     })
 
     // it('should set pokemon name in the component state', () => {
