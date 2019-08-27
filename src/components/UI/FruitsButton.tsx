@@ -1,14 +1,12 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import red from '@material-ui/core/colors/red';
+import blue from '@material-ui/core/colors/red';
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { withTheme } from '@material-ui/styles';
-const primary_color = red[300];
 
 let theme = createMuiTheme({
   palette: {
-    primary: red,
+    primary: blue,
     secondary: {
       main: '#00e',
     },

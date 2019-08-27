@@ -2,11 +2,6 @@ import { observable, action, decorate } from 'mobx';
 import { Bucket, Fruit } from './TypeDef';
 import uuid from 'uuid/v4';
 
-const mockData:Bucket[] = [
-    {_id:"1",description:"bucket1" },
-    {_id:"2",description:"bucket2" },
-    {_id:"3",description:"bucket3" },
-]
 
 class BucketModel {
     @observable buckets: Bucket[] = [];
