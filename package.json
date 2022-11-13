@@ -15,7 +15,7 @@
     "mobx-react": "^6.2.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^5.0.1",
     "rxjs": "^6.6.2",
     "typescript": "3.5.3",
     "uuid": "^3.4.0"
